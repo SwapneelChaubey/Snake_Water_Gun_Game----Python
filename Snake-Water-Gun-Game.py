@@ -1,4 +1,3 @@
-# Snake, Water and Gun game
 import random as rr
 
 def game(player, comp):
@@ -9,22 +8,32 @@ def game(player, comp):
         print("Player loses the game\n")
     else:
         print("Player wins the game\n")
-    
+
+print("welcome to the snake, water , gun game:")
+
 print('''Choice 
 * Enter 0 for Snake * 
 * Enter 1 for Water * 
 * Enter 2 for Gun   * ''')
-try:
-    player = int(input("Enter player choice (0, 1, or 2): "))
-    if player < 0 or player > 2 :
-            raise  ValueError("Value should be an 'Integer' and only '0 , 1 or 2' ")
 
-    comp = rr.randint(0,2)
-    # print(comp)
+while True:
+    try:
+        player = int(input("Enter player choice (0, 1, or 2): "))
+        if player < 0 or player > 2 :
+            raise ValueError("Value should be an 'Integer' and only '0 , 1 or 2' ")
 
-    print(f'\nPlayer chose {player}')
-    print(f'Computer chose {comp}\n')
+        comp = rr.randint(0,2)
+        # print(comp)
 
-    game(player , comp)
-except ValueError as e:
-    print(e)
+        print(f'\nPlayer chose {player}')
+        print(f'Computer chose {comp}\n')
+
+        game(player , comp)
+        
+        play_again = input("Do you want to play again? (y/n): ").strip().lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
+            break
+            
+    except ValueError as e:
+        print(e)
